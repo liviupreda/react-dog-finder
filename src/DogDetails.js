@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./DogDetails.css";
 
 class DogDetails extends Component {
@@ -6,7 +7,7 @@ class DogDetails extends Component {
     let { dog } = this.props;
     return (
       <div className="container">
-        <div className="DogDetails row">
+        <div className="DogDetails row justify-content-center mt-5">
           <div className="col-11 col-lg-5">
             <div className="DogDetails-card card">
               <img className="card-img-top" src={dog.src} alt={dog.name} />
@@ -17,10 +18,17 @@ class DogDetails extends Component {
                 </h4>
               </div>
               <ul className="list-group list-group-flush">
-                <li className="list-group-item">ONE</li>
-                <li className="list-group-item">ONE</li>
-                <li className="list-group-item">ONE</li>
+                {dog.facts.map((fact, i) => (
+                  <li className="list-group-item" key={i}>
+                    {fact}
+                  </li>
+                ))}
               </ul>
+              <div className="card-body">
+                <Link to="/dogs" className="btn btn-info">
+                  Go Back
+                </Link>
+              </div>
             </div>
           </div>
         </div>
